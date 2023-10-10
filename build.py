@@ -7,23 +7,16 @@ def get_personal_data():
     github = "MHashemzadeh"
     linkedin = "maryam-hashemzadeh-b76a7155"
     bio_text = f"""
-                <p>I am a research associate at Mila working on LLM and RL.</p>
-                <!-- <p>
+                <!-- <p>I am a research associate at Mila working on LLM and RL.</p> -->
+                <p>
                     <span style="font-weight: bold;">Research:</span>
-                    I'm passionate about leveraging learning-based systems to address complex challenges. Currently, my research focuses on Large Language Models (LLMs) and their application in interactive decision-making, akin to Reinforcement Learning (RL) agents, while emphasizing the prevention of hallucinations. Additionally, I'm exploring how LLMs can enhance generalization in Lifelong learning.     </p> -->
+                    I'm passionate about leveraging learning-based systems to address complex challenges. Currently, my research focuses on Large Language Models (LLMs) and their application in interactive decision-making, akin to Reinforcement Learning (RL) agents, while emphasizing the prevention of hallucinations. Additionally, I'm exploring how LLMs can enhance generalization in Lifelong learning.     </p> 
                 <p>
                     <span style="font-weight: bold;">Bio:</span> 
-                    I'm a research associate at <a href="https://mila.quebec/en/" target="_blank">Mila</a> supervised by <a href="http://sarathchandar.in/" target="_blank">Sarath Chandar</a> with close collaboration with <a href="https://www.microsoft.com/en-us/research/people/macote/" target="_blank">Marc-Alexandre Côté</a>x.
-                    During my PhD studies, I joined <a href="https://research.google/teams/brain/">Google Brain</a> for an internship and subsequently as a student researcher.
+                    I'm a research associate at <a href="https://mila.quebec/en/" target="_blank">Mila</a> supervised by <a href="http://sarathchandar.in/" target="_blank">Sarath Chandar</a> with close collaboration with <a href="https://www.microsoft.com/en-us/research/people/macote/" target="_blank">Marc-Alexandre Côté</a>.
                     I hold an MSc from the University of Alberta, where I conducted research with <a href="http://webdocs.cs.ualberta.ca/~whitem/" target="_blank">Martha White</a> and <a href="http://webdocs.cs.ualberta.ca/~alona/" target="_blank">Alona Fyshe</a>, specializing in Offline Reinforcement Learning. 
                 </p>
-                <p>
-                    <span style="font-weight: bold;">Awards:</span>
-                    In 2011, I graduated as top of my year from secondary school and received <a href="https://www.e-fellows.net/" target="_blank">the e-fellows scholarship</a> and was admitted to <a href="https://www.mathematik.de/" target="_blank">the Germany Mathematics Society</a> and <a href="https://www.dpg-physik.de/" target="_blank">the German Physics Society</a>. In 2017 I received the Dean's List Award for Academic Excellence for my Master's degree.
-                    During my PhD studies, I was a scholar of <a href="https://imprs.is.mpg.de/" target="_blank">the International Max Planck Research School for Intelligent Systems (IMPRS-IS)</a>.
-                    Our two research projects Occupancy Networks and DVR were selected to be <a href="https://www.paperdigest.org/2021/03/most-influential-cvpr-papers-2021-03/" target="_blank">among the top-15 most influencial CVPR papers</a> from 2019 and 2020, respectively.
-                    In 2021, we received the CS teaching award for our <a href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/autonomous-vision/lectures/computer-vision/" target="_blank">computer vision lecture</a> as well as  <a href="https://cyber-valley.de/en/news/meet-the-ai-gamedev-winners" target="blank">the AIGameDev scientific award</a> for our GRAF project and <a href="https://cvpr2021.thecvf.com/node/329" target="_blank">the CVPR Best Paper Award</a> for GIRAFFE (<a href="https://cyber-valley.de/en/news/best-paper-cvpr-2021" target="_blank">news coverage</a>).
-                </p>
+
                 <p>For any inquiries, feel free to reach out to me via mail!</p>
                 <p>
                     <a href="mailto:maryam.hashemzadeh@mila.quebec" style="margin-right: 15px"><i class="far fa-envelope-open fa-lg"></i> Mail</a>
@@ -33,9 +26,9 @@ def get_personal_data():
                 </p>
     """
     footer = """
-            <div class="col-sm-12" style="">
+            <div class="col-sm-10" style="">
                 <p>
-                    Website template adopted from <a href="https://github.com/m-niemeyer/m-niemeyer.github.io" </a>. <br>
+                    Website template adopted from <a href="https://github.com/m-niemeyer/m-niemeyer.github.io" target="_blank">Michael Niemeyer </a>.
                 </p>
             </div>
     """
@@ -105,13 +98,13 @@ def generate_person_html(persons, connection=", ", make_bold=True, make_bold_nam
 
 def get_paper_entry(entry_key, entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
+    # s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
     s += """</div><div class="col-sm-9">"""
 
-    if 'award' in entry.fields.keys():
-        s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <span style="color: red;">({entry.fields['award']})</span><br>"""
-    else:
-        s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <br>"""
+    # if 'award' in entry.fields.keys():
+    #     s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <span style="color: red;">({entry.fields['award']})</span><br>"""
+    # else:
+    #     s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <br>"""
 
     s += f"""{generate_person_html(entry.persons['author'])} <br>"""
     s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
@@ -175,7 +168,7 @@ def get_talks_html():
     return s
 
 def get_index_html():
-    # pub = get_publications_html()
+    pub = get_publications_html()
     # talks = get_talks_html()
     name, bio_text, footer = get_personal_data()
     s = f"""
@@ -208,6 +201,12 @@ def get_index_html():
             </div>
             <div class="col-md-4" style="">
                 <img src="assets/img/profile.jpg" class="img-thumbnail" width="280px" alt="Profile picture">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 1em;">
+            <div class="col-sm-12" style="">
+                <h4>Publications</h4>
+                {pub}
             </div>
         </div>
         <div class="row" style="margin-top: 3em; margin-bottom: 1em;">

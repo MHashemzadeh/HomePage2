@@ -7,13 +7,13 @@ def get_personal_data():
     github = "MHashemzadeh"
     linkedin = "maryam-hashemzadeh-b76a7155"
     bio_text = f"""
-                <!-- <p>I am a research associate at Mila working on LLM and RL.</p> -->
+                <!-- <p>I am a PhD student at Mila working on Continual Learning, LLM and RL.</p> -->
                 <p>
                     <span style="font-weight: bold;">Research:</span>
-                    I'm passionate about leveraging learning-based systems to address complex challenges. Currently, my research focuses on Large Language Models (LLMs) and their application in interactive decision-making, akin to Reinforcement Learning (RL) agents, while emphasizing the prevention of hallucinations. Additionally, I'm exploring how LLMs can enhance generalization in Lifelong learning.     </p> 
+                    I'm passionate about leveraging learning-based systems to address complex challenges. Currently, my research focuses on Large Language Models (LLMs) and their application in interactive decision-making, akin to Reinforcement Learning (RL) agents, while emphasizing online learning and adaptation. Additionally, I'm exploring how LLMs can enhance generalization in Lifelong learning.     </p> 
                 <p>
                     <span style="font-weight: bold;">Bio:</span> 
-                    I'm a research associate at <a href="https://mila.quebec/en/" target="_blank">Mila</a> supervised by <a href="http://sarathchandar.in/" target="_blank">Sarath Chandar</a> with close collaboration with <a href="https://www.microsoft.com/en-us/research/people/macote/" target="_blank">Marc-Alexandre Côté</a>.
+                    I'm a PhD student at <a href="https://mila.quebec/en/" target="_blank">Mila</a> supervised by <a href="http://sarathchandar.in/" target="_blank">Sarath Chandar</a> with close collaboration with <a href="https://www.microsoft.com/en-us/research/people/macote/" target="_blank">Marc-Alexandre Côté</a>.
                     I hold an MSc from the University of Alberta, where I conducted research with <a href="http://webdocs.cs.ualberta.ca/~whitem/" target="_blank">Martha White</a> and <a href="http://webdocs.cs.ualberta.ca/~alona/" target="_blank">Alona Fyshe</a>, specializing in Offline Reinforcement Learning. 
                 </p>
 
@@ -105,6 +105,11 @@ def get_paper_entry(entry_key, entry):
     #     s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <span style="color: red;">({entry.fields['award']})</span><br>"""
     # else:
     #     s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <br>"""
+
+    if 'award' in entry.fields.keys():
+        s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <span style="color: red;">({entry.fields['award']})</span><br>"""
+    else:
+        s += f"""<b>{entry.fields['title']}</b> <br>"""
 
     s += f"""{generate_person_html(entry.persons['author'])} <br>"""
     s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
@@ -211,7 +216,7 @@ def get_index_html():
         </div>
         <div class="row" style="margin-top: 3em; margin-bottom: 1em;">
             {footer}
-        </div> -->
+        </div> 
     </div>
 
     <!-- Optional JavaScript -->
